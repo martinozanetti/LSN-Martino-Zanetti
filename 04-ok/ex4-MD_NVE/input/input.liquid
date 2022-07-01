@@ -1,0 +1,19 @@
+0
+1
+1.99
+108
+0.8
+2.5
+0.0005
+50
+2000
+
+  ReadInput >> iNVET; 0=MD(NVE) 1=MC(NVT)
+  ReadInput >> restart; // mettere a 0 per l'equilibrazione
+  ReadInput >> temp;    // 1.99 per l'equilibrazione "one shot" a 1.1
+  ReadInput >> npart;
+  ReadInput >> rho;
+  ReadInput >> rcut;
+  ReadInput >> delta;
+  ReadInput >> nblk;   // default 50, aumentabile. Per l'equilibrazione: 20000 blocchi da 1
+  ReadInput >> nstep;  // default 2000.

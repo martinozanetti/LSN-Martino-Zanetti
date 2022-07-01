@@ -1,0 +1,10 @@
+.vscode
+/JUPYTER-NOTEBOOK/
+/teoria-slides-pdf/
+/4/ex4-MDNVE_MCNVT/frames/
+*.o
+*.ipynb_checkpoints
+note
+04-ok/ex4-MD_NVE/eq_gas.sh
+04-ok/ex4-MD_NVE/eq_liquid.sh
+04-ok/ex4-MD_NVE/eq_solid.sh

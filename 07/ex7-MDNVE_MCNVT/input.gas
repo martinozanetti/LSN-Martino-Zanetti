@@ -1,0 +1,21 @@
+1
+1
+1.2
+108
+0.05
+5.0
+5   
+50
+50
+1
+
+  ReadInput >> iNVET; 0=MD(NVE) 1=MC(NVT)
+  ReadInput >> restart;
+  ReadInput >> temp;   per avere T* = 1.2, serve temp = 0.96 // ma l'equilibrazione è già stata fatta nel 4
+  ReadInput >> npart;
+  ReadInput >> rho;    nota: L/2 = 6 (rho = 0.05)
+  ReadInput >> rcut;
+  ReadInput >> delta;  modificare questo per regolare l'accettazione (5.0 per MC, 0.0005 per MD). Nota: in MC non si riesce a scendere bene sotto 0.6
+  ReadInput >> nblk;   100'000 o 20
+  ReadInput >> nstep;  1 o 5000 (mettere a 1 se voglio un output con valori puri, non medie di blocco)
+  ReadInput >> verbose;

@@ -1,0 +1,1 @@
+Aggiungere una breve spiegazione di cosa fa e come è organizzata questa libreria.

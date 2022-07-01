@@ -1,0 +1,17 @@
+3
+50
+1.0
+0.2
+0
+20
+100000
+0
+
+  ReadInput >> temp;   // temperatura (per equilibrazione: 0.3, 0.5, 1.5, 3)
+  ReadInput >> nspin;  // numero di gdl
+  ReadInput >> J;      // interazione di scambio
+  ReadInput >> h;      // campo esterno
+  ReadInput >> metro;  // 1 = metropolis, 0 = gibbs
+  ReadInput >> nblk;   // numero di blocchi (10)
+  ReadInput >> nstep;  // step per blocco (10^5)
+  ReadInput >> restart;// se=1, riparte da config.out

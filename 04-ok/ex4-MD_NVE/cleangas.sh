@@ -1,0 +1,1 @@
+rm -rf output/gas/*.dat

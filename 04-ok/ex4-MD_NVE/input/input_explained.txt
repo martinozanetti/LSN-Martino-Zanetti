@@ -1,0 +1,19 @@
+0/1   # integer booleano: per noi 0 (false): Mol Dynamics; 1 (true): monte carlo (lez.7)
+0     # come sopra: 0 start from fcc, 1 load last config (=restart).
+1.1   # temperatura
+108   # num particelle
+0.8   # densita
+2.5   # cutoff
+0.0005/0.2 # timestep/passo nel caso monte carlo
+20    # num blocchi
+2000  # step per blocco
+
+  ReadInput >> iNVET; 0=MD(NVE) 1=MC(NVT)
+  ReadInput >> restart;
+  ReadInput >> temp;
+  ReadInput >> npart;
+  ReadInput >> rho;
+  ReadInput >> rcut;
+  ReadInput >> delta;
+  ReadInput >> nblk;
+  ReadInput >> nstep;
