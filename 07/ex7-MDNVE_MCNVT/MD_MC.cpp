@@ -248,9 +248,12 @@ void Input(void)
 
 //Print initial values for measured properties
   cout << ",-------- Initial configuration -------," << endl;
-  cout << "| Initial potential energy = " << walker[iv]/(double)npart << endl;
-  cout << "| Initial temperature      = " << walker[it] << endl;
-  cout << "| Initial pressure         = " << walker[iw] << endl;
+  cout << "| Initial potential energy (/N) = " << walker[iv]/(double)npart << endl;
+  //cout << "| Initial temperature      = " << walker[it] << endl;
+  cout << "| Initial temperature           = " << temp << endl;
+  cout << "| Initial virial                = " << walker[iw] << endl;
+  //cout << "| Initial pressure         = " << rho * walker[it] + walker[iw]/(3.0*vol) << endl;
+  cout << "| Initial pressure              = " << rho * temp + walker[iw]/(3.0*vol) << endl;
   cout << "'--------------------------------------'" << endl;
 
   return;
@@ -301,9 +304,10 @@ void Measure() //Properties measurement
 
 // walker è il vettore che tiene tutte le quantità: le registro
 
-  walker[iv] = 4.0 * v + v_tail;           // Potential energy, vedi slide 43 (lez.5?) <<<<< aggiunto tail corrections // da dividere per Npart più avanti
-  walker[it] = (2.0 / 3.0) * kin/(double)npart; // Temperature: dall'en cinetica
-  walker[iw] = rho * walker[it] + (w + w_tail)/(3.0*vol);  // Pressure: dal viriale. <<<<< idem
+  walker[iv] = 4.0 * v + v_tail;           // Potential energy [total!], vedi slide 43 (lez.5?) <<<<< aggiunto tail corrections // da dividere per Npart più avanti
+  //walker[it] = (2.0 / 3.0) * kin/(double)npart; // Temperature: dall'en cinetica
+  //walker[iw] = rho * walker[it] + (w + w_tail)/(3.0*vol);  // Pressure: dal viriale. <<<<< idem
+  walker[iw] = (w + w_tail);  // Viriale. <<<<< idem
 
   return;
 }
@@ -316,8 +320,8 @@ void Averages(int iblk) //Print results for current block. Alla fine del blocco 
     if (verbose && iblk%1000==0)
     {
       cout << "Block number " << iblk << "/" << nblk << endl;
-      cout << "Acceptance rate " << accepted/attempted << endl << endl;
-      cout << "----------------------------" << endl << endl;
+      cout << "Acceptance rate " << accepted/attempted << endl ;
+      cout << "----------------------------" << endl ;
     }
 
     Epot.open(phase + "/output_epot.dat",ios::app);
@@ -329,7 +333,8 @@ void Averages(int iblk) //Print results for current block. Alla fine del blocco 
     glob_av2[iv] += stima_pot*stima_pot;
     err_pot=Error(glob_av[iv],glob_av2[iv],iblk);
     
-    stima_pres = blk_av[iw]/blk_norm; //Pressure: dividere per npart? no, essendo una grandezza intensiva
+    //stima_pres = rho * walker[it] + (blk_av[iw]/blk_norm)/(3.0*vol); //Pressure: dividere per npart? no, essendo una grandezza intensiva
+    stima_pres = rho * temp + (blk_av[iw]/blk_norm)/(3.0*vol); //Pressure: dividere per npart? no, essendo una grandezza intensiva
     glob_av[iw] += stima_pres;
     glob_av2[iw] += stima_pres*stima_pres;
     err_press=Error(glob_av[iw],glob_av2[iw],iblk);
