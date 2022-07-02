@@ -30,22 +30,25 @@ public:
 
   Chromosome& operator= (const Chromosome& chr);
 
-  // methods  
-  int Pbc(int pos);
-  bool Check();
-  double EvalFitness();
-  void Print();
+  // methods
+
+  // set e get
+  void SetGen(int vec[Ng]);
   void SetFitness(double f);
   void SetLen(double l);
+  double GetFtn();
   double GetLen();
   int  GetNg();
   int  GetGen(int i);
+
+  // altri
+  int Pbc(int pos);
+  bool Check();
   void Fill(Random &rnd);
   void Empty();
-  double GetFtn();
-  void SetGen(int vec[Ng]);
+  void Print();
 
-  
+  // mutations
   void PairPermut(int n, int m);
   void Shift(int pos, int m, int n);
   void Shift2(int shift);

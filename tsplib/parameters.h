@@ -1,5 +1,5 @@
 
-static const int NindPop = 300;      // number of idividuals in population [good:3000]
+static const int NindPop = 3000;      // number of idividuals in population [good:3000]
 static const int Ngenes = 34;        // number of genes in a chromosome = number of cities in the problemset
 static const int NGeneration = 500; // numero di generazioni consecutive
 static const double pmut[6] = {

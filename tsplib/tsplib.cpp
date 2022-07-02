@@ -151,8 +151,85 @@ Chromosome& Chromosome::operator= (const Chromosome& chr)
 
 // methods
 
-/// Verifica (indirettamente, può sbagliare?) che il cromosoma contenga tutti i geni e il primo sia fisso
-bool Chromosome :: Check(){ // FARE CHECK COMPLETO ESTESO?? (adesso verifica solo la somma)
+// get e set
+
+void Chromosome :: SetGen(int vec[Ng]){
+   for(int i = 0; i< Ng; i++) Gen[i] = vec[i];
+}
+
+void Chromosome :: SetFitness(double f){ 
+   Ftn = f;
+}
+
+void Chromosome :: SetLen(double l){ 
+   Len = l;
+}
+
+double Chromosome :: GetFtn(){
+   return Ftn;
+}
+
+double Chromosome :: GetLen(){ 
+   return Len;
+}
+
+int Chromosome :: GetNg(){
+   return Ng;
+}
+
+int Chromosome :: GetGen(int i){
+   return Gen[i];
+}
+
+
+// altri metodi
+
+/// stampa i geni del cromosoma
+void Chromosome :: Print(){
+
+   for(int i =0; i<Ng; i++) cout << Gen[i] << " ";
+   cout << endl;
+}
+
+/// riempie il cromosoma con geni casuali
+void Chromosome :: Fill(Random &rnd){
+   //if(Gen[0] != 0) {cerr << "Can't fill full chromosome!" << endl; abort();}
+   if(Gen[0] != 0) {cerr << "Can't fill full chromosome: I clean it." << endl; this->Empty();}
+   
+   int r = (int)(rnd.Rannyu()*Ng);
+   Gen[0] = 1;
+   // prendo interi in ordine
+   for(int i = 2; i<Ng+1; i++){
+      
+      while(Gen[r]!=0){ // finchè la posizione è vuota ...
+         r = (int)(rnd.Rannyu()*Ng);
+      }
+      Gen[r] = i; // ...la riempio...
+   }
+}
+
+/// svuota il cromosoma
+void Chromosome :: Empty(){
+   for(int i = 0; i<Ng; i++){
+      Gen[i] = 0; 
+   }
+}
+
+
+// accessori alle mutazioni
+
+/// Applica pbc quando necessario durante le mutazioni
+int Chromosome :: Pbc(int pos){
+   if(pos>(Ng-1) && pos%(Ng-1)!=0)    pos = pos%(Ng-1); // non Ng, perchè devo saltare la posizione 0
+   if(pos>(Ng-1) && pos%(Ng-1)==0)    pos = Ng-1;
+   if(pos < 0)       pos = Ng + pos%Ng;
+   return pos;
+}
+
+/// Verifica indirettamente (può fallire ma è molto improbabile)
+/// che il cromosoma contenga tutti i geni e il primo sia fisso.
+/// Verifica che la somma totale dei geni sia corretta.
+bool Chromosome :: Check(){
 
    if(Gen[0] != 1){ // controllo che il primo gene sia sempre 1
       cerr << "Check: something went wrong. First gene is no more 1." << endl;
@@ -190,69 +267,6 @@ bool Chromosome :: Check(){ // FARE CHECK COMPLETO ESTESO?? (adesso verifica sol
 
 
    return 1;
-}
-
-void Chromosome :: SetFitness(double f){ 
-   Ftn = f;
-}
-
-void Chromosome :: SetLen(double l){ 
-   Len = l;
-}
-
-double Chromosome :: GetLen(){ 
-   return Len;
-}
-
-void Chromosome :: Print(){
-
-   for(int i =0; i<Ng; i++) cout << Gen[i] << " ";
-   cout << endl;
-}
-
-int Chromosome :: Pbc(int pos){
-   if(pos>(Ng-1) && pos%(Ng-1)!=0)    pos = pos%(Ng-1); // non Ng, perchè devo saltare la posizione 0
-   if(pos>(Ng-1) && pos%(Ng-1)==0)    pos = Ng-1;
-   if(pos < 0)       pos = Ng + pos%Ng;
-   return pos;
-}
-
-int Chromosome :: GetNg(){
-   return Ng;
-}
-
-double Chromosome :: GetFtn(){
-   return Ftn;
-}
-
-int Chromosome :: GetGen(int i){
-   return Gen[i];
-}
-
-void Chromosome :: Fill(Random &rnd){
-   //if(Gen[0] != 0) {cerr << "Can't fill full chromosome!" << endl; abort();}
-   if(Gen[0] != 0) {cerr << "Can't fill full chromosome: I clean it." << endl; this->Empty();}
-   
-   int r = (int)(rnd.Rannyu()*Ng);
-   Gen[0] = 1;
-   // prendo interi in ordine
-   for(int i = 2; i<Ng+1; i++){
-      
-      while(Gen[r]!=0){ // finchè la posizione è vuota ...
-         r = (int)(rnd.Rannyu()*Ng);
-      }
-      Gen[r] = i; // ...la riempio...
-   }
-}
-
-void Chromosome :: Empty(){
-   for(int i = 0; i<Ng; i++){
-      Gen[i] = 0; 
-   }
-}
-
-void Chromosome :: SetGen(int vec[Ng]){
-   for(int i = 0; i< Ng; i++) Gen[i] = vec[i];
 }
 
 
