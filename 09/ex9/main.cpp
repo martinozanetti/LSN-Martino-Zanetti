@@ -30,7 +30,7 @@ int main (){
     int nPas = NGeneration; // numero di generazioni consecutive
 
     // genero città e popolazione di cromosomi associata, valuto e metto in ordine
-    //pr.GenCircCities();         // <<< COMMENTARE ALTERNATIVAMENTE QUESTE DUE RIGHE A SECONDA DEL DESIDERIO
+    //pr.GenCircCities();       // <<< COMMENTARE ALTERNATIVAMENTE QUESTE DUE RIGHE A SECONDA DEL DESIDERIO
     pr.GenSquareCities();     // <<< COMMENTARE ALTERNATIVAMENTE QUESTE DUE RIGHE A SECONDA DEL DESIDERIO
     pop.Birth(rnd);
     pr.EvalAll(pop);    
