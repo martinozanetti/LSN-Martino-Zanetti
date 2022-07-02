@@ -20,6 +20,7 @@ using namespace std;
 
 int main (){
 
+// ====== INIZIALIZZAZIONE ======
     Random rnd;
     rnd.SetSeed();
     rnd.SetPrimesCouple(23);
@@ -35,6 +36,7 @@ int main (){
     pr.EvalAll(pop);    
     pr.SortPop(&pop);
 
+// ======== EVOLUZIONE ========
     // ciclo sulle generazioni
     for(int k = 0; k < nPas; k++){
         
