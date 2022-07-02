@@ -26,8 +26,8 @@ int main (){
     rnd.SetPrimesCouple(23);
     Problemset pr;
     Population pop;
-    int nPop = pop.GetNPop(); // nuomero di cromosomi (= individui nella popolazione)
-    int nPas = NGeneration; // numero di generazioni consecutive
+    int nPop = pop.GetNPop();    // nuomero di cromosomi (= individui nella popolazione)
+    int nPas = NGeneration;      // numero di generazioni consecutive
 
     // genero città e popolazione di cromosomi associata, valuto e metto in ordine
     //pr.GenCircCities();       // <<< COMMENTARE ALTERNATIVAMENTE QUESTE DUE RIGHE A SECONDA DEL DESIDERIO

@@ -13,11 +13,14 @@ using namespace std;
 //       POPULATION                                       //
 //========================================================//
 
-Population :: Population(){} // costruttore
-Population :: ~Population(){} // distruttore
+/// Costruttore
+Population :: Population(){}
+/// Distruttore
+Population :: ~Population(){}
 
 // methods
 
+/// riempie il membro array di cromosomi in modo randomico
 void Population :: Birth(Random &rnd){
    Chromosome chr;
    for(int i =0; i < Npop; i++){
@@ -32,6 +35,8 @@ int Population :: GetNPop(){
    return Npop;
 }
 
+/// Metodo complesso: travasa la popolazione in una generazione successiva,
+/// generata per mutazioni dei migliori individui della generazione attuale.
 void Population :: Mutate(Random &rnd){
 
    // variabili
@@ -50,9 +55,10 @@ void Population :: Mutate(Random &rnd){
       if(i>Npop/2) len_av += this->Chr[i].Len;          // media migliori
       if(i == Npop-1) this->BestLen = this->Chr[i].Len; // il migliore
 
-      h = (int)(Npop*(1-pow(rnd.Rannyu(),expo)))-1; // un indice alto
-      if(h>=Npop) h = Npop-1;                      // lim_sup
-      if(h<0) h = 0;                              // lim_inf
+      // estraggo uno dei migliori secondo legge di potenza, poi lo salvo
+      h = (int)(Npop*(1-pow(rnd.Rannyu(),expo)))-1; // estrae un indice alto
+      if(h>=Npop) h = Npop-1;                       // lim_sup
+      if(h<0) h = 0;                                // lim_inf
       chr_appo[i] = this->Chr[h];
       //chr_appo[i].Check();
    }
@@ -248,6 +254,8 @@ void Chromosome :: Empty(){
 void Chromosome :: SetGen(int vec[Ng]){
    for(int i = 0; i< Ng; i++) Gen[i] = vec[i];
 }
+
+
 // Mutazioni
 
 /// 1) permuta due geni
@@ -458,8 +466,6 @@ void Chromosome :: Crossover(int pos, int len, Chromosome parent2){
          //}
       }
    } 
-
-
 }
 
 
@@ -470,9 +476,12 @@ void Chromosome :: Crossover(int pos, int len, Chromosome parent2){
 //       PROBLEMSET                                       //
 //========================================================//
 
-Problemset :: Problemset(){} // costruttore
-Problemset :: ~Problemset(){} // distruttore
+/// Costruttore
+Problemset :: Problemset(){}
+/// Distruttore
+Problemset :: ~Problemset(){}
 
+/// genera coordinate di città in su una circonferenza unitaria
 void Problemset :: GenCircCities(){
    
    Random rnd;
@@ -487,6 +496,7 @@ void Problemset :: GenCircCities(){
    }
 }
 
+/// genera coordinate di città in un quadrato di lato unitario
 void Problemset :: GenSquareCities(){
    
    Random rnd;
@@ -502,6 +512,7 @@ void Problemset :: GenSquareCities(){
    }
 }
 
+/// stampa le coordinate delle città nell'ordine indicato da un cromosoma
 void Problemset :: PrintCities(int generation, Chromosome chr){
 
    ofstream stream;
@@ -516,6 +527,7 @@ void Problemset :: PrintCities(int generation, Chromosome chr){
    stream.close();
 }
 
+/// stampa la lunghezza media della migliore metà di individui in una popolazione
 void Problemset :: PrintBestsLenAve(int generation, int part, Population pop){
    
    ofstream str;
@@ -529,6 +541,7 @@ void Problemset :: PrintBestsLenAve(int generation, int part, Population pop){
    str.close();
 }
 
+/// Stampa la lunghezza del miglior individuo di una popolazione
 void Problemset :: PrintBestLen(int generation, Population pop){
 
    ofstream str;
@@ -541,7 +554,8 @@ void Problemset :: PrintBestLen(int generation, Population pop){
    str << generation << " " << pop.BestLen << endl;
    str.close();
 }
-/// prende un cromosoma e con l'ordine dei geni calcola la distanza tra le città
+
+/// prende un cromosoma e con l'ordine dei geni calcola la distanza tra le città e la fitness
 void Problemset :: EvalFitness(Chromosome &chr){
    double fitn = 0;
    double accu = 0;
@@ -569,13 +583,14 @@ void Problemset :: EvalFitness(Chromosome &chr){
 
 }
 
+/// prende una popolazione e applica EvalFitness su tutti i suoi individui
 void Problemset :: EvalAll(Population &pop){ 
    for(int i = 0; i < pop.GetNPop(); i++){
       EvalFitness(pop.Chr[i]);
    }
-   
 }
 
+/// prende una popolazione e mette in ordine i suoi individui dal peggiore al migliore
 void Problemset :: SortPop(Population *pop){
    quickSort(pop, 0, pop->GetNPop()-1);
 }
@@ -585,6 +600,7 @@ void Problemset :: SortPop(Population *pop){
 //       OTHER FUNCTIONS                                  //
 //========================================================//
 
+/// funzione necessaria in quicksort
 int partition(Population *pop, int low, int high){
     
    // prendo la ftn dell'elemento più a destra
@@ -615,6 +631,7 @@ int partition(Population *pop, int low, int high){
    return (i + 1);
 }
 
+/// funzione necessaria in SortPop
 void quickSort(Population *pop, int low, int high) {
   if (low < high) {
 

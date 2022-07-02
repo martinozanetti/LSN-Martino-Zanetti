@@ -81,8 +81,8 @@ public:
   ~Population();
 
   // methods
-  void Birth(Random &rnd);
   int GetNPop();
+  void Birth(Random &rnd);
   void Mutate(Random &rnd);
 };
 
