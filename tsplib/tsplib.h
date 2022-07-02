@@ -42,8 +42,6 @@ public:
   int  GetGen(int i);
 
   // altri
-  int Pbc(int pos);
-  bool Check();
   void Fill(Random &rnd);
   void Empty();
   void Print();
@@ -55,6 +53,10 @@ public:
   void MPermut(int pos1, int pos2, int m);
   void Inversion(int pos, int m);
   void Crossover(int pos, int len, Chromosome parent2);
+  // accessori alle mutazioni
+  int Pbc(int pos);
+  bool Check();
+
 
 };
 
