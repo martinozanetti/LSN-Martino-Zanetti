@@ -504,16 +504,16 @@ void Problemset :: GenSquareCities(){
 
 void Problemset :: PrintCities(int generation, Chromosome chr){
 
-   ofstream str;
-   str.open("cit/"+to_string(generation)+"citycoord.out");
+   ofstream stream;
+   stream.open("cit/"+to_string(generation)+"citycoord.out");
 
    int seq;
    for(int i = 0; i<Ncit; i++){
       // stampo 
       seq = chr.GetGen(i)-1; // nell'ordine indicato dal cromosoma
-      str << Xcit[seq]  << " " << Ycit[seq] << endl;
+      stream << Xcit[seq]  << " " << Ycit[seq] << endl;
    }
-   str.close();
+   stream.close();
 }
 
 void Problemset :: PrintBestsLenAve(int generation, int part, Population pop){

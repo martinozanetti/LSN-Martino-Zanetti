@@ -29,8 +29,8 @@ int main (){
     int nPas = NGeneration; // numero di generazioni consecutive
 
     // genero città e popolazione di cromosomi associata, valuto e metto in ordine
-    //pr.GenCircCities();
-    pr.GenSquareCities();
+    pr.GenCircCities();
+    //pr.GenSquareCities();
     pop.Birth(rnd);
     pr.EvalAll(pop);    
     pr.SortPop(&pop);
@@ -43,7 +43,7 @@ int main (){
         pr.SortPop(&pop);
 
         // salvo i risultati
-        pr.PrintCities(k, pop.Chr[nPop-1]);
+        pr.PrintCities(k, pop.Chr[nPop-1]); //scegliendo Chr[nPop-1], prendo il migliore
         pr.PrintBestsLenAve(k, nPop/2, pop);
         pr.PrintBestLen(k, pop);
 
