@@ -114,9 +114,9 @@ class Problemset {
 
     void GenCircCities();
     void GenSquareCities();
-    void PrintCities(int generation, Chromosome chr);
-    void PrintBestsLenAve(int generation, int part, Population pop);
-    void PrintBestLen(int generation, Population pop);
+    void PrintCities(int generation, Chromosome chr, int rank);
+    void PrintBestsLenAve(int generation, int part, Population pop, int rank);
+    void PrintBestLen(int generation, Population pop, int rank);
     void EvalFitness(Chromosome &chr);
     void EvalAll(Population &pop);
     void SortPop(Population *pop);

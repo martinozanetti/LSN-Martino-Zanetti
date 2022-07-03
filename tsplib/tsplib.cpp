@@ -527,10 +527,11 @@ void Problemset :: GenSquareCities(){
 }
 
 /// stampa le coordinate delle città nell'ordine indicato da un cromosoma
-void Problemset :: PrintCities(int generation, Chromosome chr){
+void Problemset :: PrintCities(int generation, Chromosome chr, int rank){
 
    ofstream stream;
-   stream.open("cit/"+to_string(generation)+"citycoord.out");
+   string rnk = to_string(rank);
+   stream.open("cit/"+to_string(generation)+"citycoord"+rnk+".out");
 
    int seq;
    for(int i = 0; i<Ncit; i++){
@@ -542,10 +543,11 @@ void Problemset :: PrintCities(int generation, Chromosome chr){
 }
 
 /// stampa la lunghezza media della migliore metà di individui in una popolazione
-void Problemset :: PrintBestsLenAve(int generation, int part, Population pop){
+void Problemset :: PrintBestsLenAve(int generation, int part, Population pop, int rank){
    
    ofstream str;
-   str.open("bestLen/BLAv.out", std::ios_base::app);
+   string rnk = to_string(rank);
+   str.open("bestLen/BLAv"+rnk+".out", std::ios_base::app);
 
    // ho una variabile BestsLenAve in pop che tiene 
    // conto della media nella metà migliore 
@@ -556,10 +558,11 @@ void Problemset :: PrintBestsLenAve(int generation, int part, Population pop){
 }
 
 /// Stampa la lunghezza del miglior individuo di una popolazione
-void Problemset :: PrintBestLen(int generation, Population pop){
+void Problemset :: PrintBestLen(int generation, Population pop, int rank){
 
    ofstream str;
-   str.open("bestLen/BL.out", std::ios_base::app);
+   string rnk = to_string(rank);
+   str.open("bestLen/BL"+rnk+".out", std::ios_base::app);
 
    // ho una variabile BestLen in pop che tiene 
    // conto della lunghezza migliore 
