@@ -256,9 +256,10 @@ void MeasureAverageH()
             
             // accumulo H nel blocco
             H += EvalH(y);
-
+            
             // salvo dove sono
             if(!SA && j%(steps/histofill_blk) == 0) WritePos << y << endl;
+            
         }
 
         // stampo acceptance rate
@@ -268,7 +269,8 @@ void MeasureAverageH()
             cout << "Acceptance rate:   " << (double)accepted/attempted << endl;
             cout << "-----------------------------------" << endl;
         }
-        
+                    
+
         // medie di blocco
         H /= steps;   
         mean_prog_H += H;

@@ -1,0 +1,43 @@
+100
+100000
+6
+2
+
+0.8
+0.6
+0
+1000
+
+1
+1.5
+40
+
+1
+1
+0.01
+0.01
+
+1
+3
+
+  ReadInput >> nblk;      // ideale 100
+  ReadInput >> nstep;     // ideale 10'000, 100'000 se !SA <<<<<<<<<<<<<<<<<<
+  ReadInput >> L;         // step of the uniform transition prob
+  ReadInput >> x0;        // x iniziale, ideale intorno a 1
+
+  ReadInput >> mu;        // centro della gaussiana 0.8
+  ReadInput >> sgm;       // larghezza della gaussiana 0.6
+  ReadInput >> SA;        // Simulated Annealing ?
+  ReadInput >> histofill_blk // numero di posizioni salvate per blocco 1000, 100 se faccio il più corto per H <<<<<<<<<<<<<<<<
+
+  ReadInput >> beta;      // temperatura
+  ReadInput >> db;        // delta beta per ogni passaggio successivo di annealing
+  ReadInput >> step_in_beta; // step per ogni beta
+
+  ReadInput >> Lmu;       // larghezza iniziale passi mu
+  ReadInput >> Lsgm;      // idem per sigma
+  ReadInput >> errMu;     // errore con cui voglio determinare mu
+  ReadInput >> errSgm;    // errore con cui voglio determinare sgm
+
+  ReadInput >> manualseed; // set seeds declared below
+  ReadInput >> pr;        // set primes couple
