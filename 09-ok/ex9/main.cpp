@@ -45,9 +45,9 @@ int main (){
         pr.SortPop(&pop);
 
         // salvo i risultati
-        pr.PrintCities(k, pop.Chr[nPop-1]); //scegliendo Chr[nPop-1], prendo il migliore
-        pr.PrintBestsLenAve(k, nPop/2, pop);
-        pr.PrintBestLen(k, pop);
+        pr.PrintCities(k, pop.Chr[nPop-1], 0); //scegliendo Chr[nPop-1], prendo il migliore
+        pr.PrintBestsLenAve(k, nPop/2, pop, 0);
+        pr.PrintBestLen(k, pop, 0);
 
         if(k%10 == 0) cout << "Generation n: " << k  << " of " << nPas << endl;
     }
