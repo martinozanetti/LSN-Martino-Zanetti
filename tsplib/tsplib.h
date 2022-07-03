@@ -1,8 +1,11 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "../random/random.h"
 #include "parameters.h"
+
+using namespace std;
 
 //========================================================//
 //       CHROMOSOME                                       //
@@ -120,6 +123,8 @@ class Problemset {
     void EvalFitness(Chromosome &chr);
     void EvalAll(Population &pop);
     void SortPop(Population *pop);
+    void LoadCities(string filename);
+
 
 };
 

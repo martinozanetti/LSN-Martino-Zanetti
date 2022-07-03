@@ -526,6 +526,25 @@ void Problemset :: GenSquareCities(){
    }
 }
 
+void Problemset :: LoadCities(string filename){
+   
+   ifstream coord;
+   coord.open(filename);
+   
+   double pos;
+
+   if(coord.is_open()){
+      for(int i = 0; i<Ncit; i++){
+         coord >> pos; // load x
+         Xcit[i] = pos;
+         coord >> pos; // load y
+         Ycit[i] = pos;
+      }
+   }else{cout << "Unable to read "+filename+". Exit." << endl; exit(1);}
+
+   coord.close();
+}
+
 /// stampa le coordinate delle città nell'ordine indicato da un cromosoma
 void Problemset :: PrintCities(int generation, Chromosome chr, int rank){
 
