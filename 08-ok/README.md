@@ -1,6 +1,6 @@
 # Esercitazione 8
 
-Per **compilare** il codice, entrare nella cartella Ising_1D e comandare
+Per **compilare** il codice, entrare nella cartella ex8 e comandare
 ```bash
 make
 ```
