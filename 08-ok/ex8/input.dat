@@ -4,7 +4,7 @@
 2
 
 0.8
-0.6
+0.63
 0
 1000
 
@@ -21,14 +21,14 @@
 3
 
   ReadInput >> nblk;      // ideale 100
-  ReadInput >> nstep;     // ideale 10'000, 100'000 se !SA <<<<<<<<<<<<<<<<<<
+  ReadInput >> nstep;     // 10'000 per SA, 100'000 per !SA <<<<<<<<<<<<<<<<<<
   ReadInput >> L;         // step of the uniform transition prob
   ReadInput >> x0;        // x iniziale, ideale intorno a 1
 
-  ReadInput >> mu;        // centro della gaussiana 0.8
-  ReadInput >> sgm;       // larghezza della gaussiana 0.6
-  ReadInput >> SA;        // Simulated Annealing ?
-  ReadInput >> histofill_blk // numero di posizioni salvate per blocco 1000, 100 se faccio il più corto per H <<<<<<<<<<<<<<<<
+  ReadInput >> mu;        // centro della gaussiana: 0.8 per SA, 1 per !SA <<<<<<<<<<<<<<<<<
+  ReadInput >> sgm;       // larghezza della gaussiana: 0.6 per SA, 0.5 per !SA <<<<<<<<<<<<<<<<<<<<
+  ReadInput >> SA;        // Simulated Annealing ? <<<<<<<<<<<<<<<<<<<<
+  ReadInput >> histofill_blk // numero di posizioni salvate per blocco: 1000 per tutti, 100 se faccio il più corto !SA <<<<<<<<<<<<<<<<
 
   ReadInput >> beta;      // temperatura
   ReadInput >> db;        // delta beta per ogni passaggio successivo di annealing

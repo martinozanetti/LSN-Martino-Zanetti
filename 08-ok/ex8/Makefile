@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -Wall -O3 --std=c++11
 
 run : exe
-	./main.exe
+	./main.exe > out.txt
 exe : main.o random.o mylib.o
 	$(CC) random.o mylib.o main.o -o main.exe
 main.o : main.cpp
