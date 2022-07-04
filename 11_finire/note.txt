@@ -10,8 +10,13 @@ Sul mio pc
 #
 # To activate this environment (tensorflow), use
 #
-#     $ conda activate tf
+#     $ conda activate tf (adesso di nuovo base)
 #
 # To deactivate an active environment, use
 #
 #     $ conda deactivate
+
+
+p.13 spiega supervised learning
+p.22 NNs categories
+p.43 overfitting
