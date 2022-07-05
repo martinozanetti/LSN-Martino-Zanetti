@@ -1,8 +1,7 @@
 CC = g++
 CFLAGS = -Wall -O3 --std=c++11
 
-run : exe
-	./main.exe > out.txt
+
 exe : main.o random.o mylib.o
 	$(CC) random.o mylib.o main.o -o main.exe
 main.o : main.cpp
@@ -16,3 +15,5 @@ clean :
 clean-out :
 	rm *.out 
 clean-all : clean clean-out
+run : exe
+	./main.exe > out.txt
